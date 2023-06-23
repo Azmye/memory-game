@@ -78,15 +78,16 @@ export default function Home() {
   //the game when finished
   useEffect(() => {
     const checkMatched = cards.every((card) => card.matched === true);
+    console.log(checkMatched);
 
-    if (checkMatched && turns === 6) {
+    if (checkMatched && turns >= 6 && turns < 7) {
       setFeedback('Perfect');
-    } else if (checkMatched && turns <= 12) {
+    } else if (checkMatched && turns > 6 && turns < 12) {
       setFeedback('Good One!');
-    } else if (checkMatched && turns <= 100) {
+    } else if (checkMatched && turns > 12 && turns < 100) {
       setFeedback('Nice Try!');
     }
-  }, [turns]);
+  }, [cards, turns]);
 
   return (
     <div className="flex flex-col justify-center py-5">
